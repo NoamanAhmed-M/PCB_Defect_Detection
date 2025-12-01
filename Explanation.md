@@ -50,7 +50,7 @@ st.set_page_config(page_title="PCB Defect Detector", layout="wide", initial_side
 st.markdown("""
     <style>
     .main { padding: 2rem; }
-    .header { color: #1f77b4; font-size: 2.5em; font-weight: bold; margin-bottom: 1rem; }
+    .header { color: #ffffff; font-size: 2.5em; font-weight: bold; margin-bottom: 1rem; }
     </style>
 """, unsafe_allow_html=True)
 ```
@@ -59,14 +59,14 @@ st.markdown("""
 
 - Adds custom styling with CSS
 - `.main` - Adds padding around main content
-- `.header` - Styles the title (blue color, large font, bold)
+- `.header` - Styles the title (blue white, large font, bold)
 
 ---
 
 ### 4. **Title Display (Lines 22-23)**
 
 ```python
-st.markdown('<div class="header">🔬 PCB Defect Detection System</div>', unsafe_allow_html=True)
+st.markdown('<div class="header">PCB Defect Detection System</div>', unsafe_allow_html=True)
 st.write("Upload a PCB image to detect defects using YOLOv12 model")
 ```
 
@@ -101,7 +101,7 @@ def load_model():
 
 ---
 
-### 6. **Model Loading & Error Handling (Lines 33-36)**
+### 6. **Model Loading & Error Handling (Lines 54-57)**
 
 ```python
 model = load_model()
@@ -117,7 +117,7 @@ if model is None:
 
 ---
 
-### 7. **Sidebar Settings (Lines 38-42)**
+### 7. **Sidebar Settings (Lines 59-65)**
 
 ```python
 with st.sidebar:
@@ -138,7 +138,7 @@ with st.sidebar:
 
 ---
 
-### 8. **Main Layout (Lines 44-48)**
+### 8. **Main Layout (Lines 66-72)**
 
 ```python
 col1, col2 = st.columns(2)
