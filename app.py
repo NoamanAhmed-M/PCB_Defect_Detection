@@ -75,13 +75,13 @@ with col1:
 # Process image
 if uploaded_file is not None:
     # Open with PIL and force RGB (drops alpha if present)
-    image = Image.open(uploaded_file).convert("RGB"), iou=iou
+    image = Image.open(uploaded_file).convert("RGB")
     img_array = np.array(image)
 
     
     # Run inference
     with st.spinner("Detecting defects..."):
-        results = model.predict(img_array, conf=confidence, iou=iou)
+        results = model.predict(img_array, conf=confidence)
         result = results[0]
         
         # Get annotated image
