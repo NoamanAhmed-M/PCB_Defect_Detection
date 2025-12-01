@@ -66,22 +66,17 @@ col1, col2 = st.columns(2)
 with col1:
     st.subheader("YOLO")
     uploaded_file = st.file_uploader("Attach your PCB image", type=["jpg", "jpeg", "png", "bmp"])
-# # other model option, if Noaman wanna add it.
-# # other model option, if Noaman wanna add it.
-# with col2:
-#     st.subheader("Open CV")
-#     uploaded_file_opencv = st.file_uploader("Use the OpenCV library", type=["jpg", "jpeg", "png", "bmp"], disabled=True, help="This feature is under development m'man.")
 
 # Process image
 if uploaded_file is not None:
     # Open with PIL and force RGB (drops alpha if present)
-    image = Image.open(uploaded_file).convert("RGB"), iou=iou
+    image = Image.open(uploaded_file).convert("RGB")
     img_array = np.array(image)
 
     
     # Run inference
     with st.spinner("Detecting defects..."):
-        results = model.predict(img_array, conf=confidence, iou=iou)
+        results = model.predict(img_array, conf=confidence)
         result = results[0]
         
         # Get annotated image
@@ -114,9 +109,4 @@ if uploaded_file is not None:
             # Confidence scores
             st.divider()
             st.write("**Confidence Scores:**")
-            confidences = result.boxes.conf.cpu().numpy()
-            for i, conf in enumerate(confidences):
-                st.write(f"Detection {i+1}: {conf:.2%}")
-        else:
-            st.info("No defects detected!")
-            st.metric("Total Defects Detected", 0)
+            confidences = result.boxes.conf.cpu().
